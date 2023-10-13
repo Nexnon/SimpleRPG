@@ -1,6 +1,7 @@
 package ru.vsu.cs;
 
 import ru.vsu.cs.items.Armor;
+import ru.vsu.cs.items.Item;
 import ru.vsu.cs.items.Weapon;
 
 import java.io.*;
@@ -45,6 +46,19 @@ public class Generator {
 
     private static void setRandomInventory(Player player){
         Random random = new Random();
+        double cItem = 0.15;
+        double cType = 0.5;
+
+        int rows = 10;
+        int cols = 6;
+
+        for(int i = 0; i < rows; i++){
+            for(int j = 0; j < cols; j++){
+                if(random.nextDouble(1) < cItem){
+                    player.getInventory().setItem(i, j, (random.nextDouble(1) < cType) ? new Armor(1, "Chestplate", random.nextInt(10) + 3) : new Weapon(0, "Sword", random.nextInt(50) + 20));
+                }
+            }
+        }
     }
 
     private static void setRandomBalance(Player player){
@@ -67,6 +81,9 @@ public class Generator {
 
     private static void setRandomSkillTree(Player player){
         Random random = new Random();
+        for (int i = 0; i < 3; i++){
+            player.getSkillTree().getSkill(i).setResearched(random.nextBoolean());
+        }
     }
 
 }
