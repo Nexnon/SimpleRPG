@@ -24,4 +24,12 @@ public class Balance {
     public void addGold(int delta) {
         this.gold += delta;
     }
+
+    @Override
+    public String toString() {
+        return "Balance{" +
+                "silver=" + silver +
+                ", gold=" + gold +
+                '}';
+    }
 }
