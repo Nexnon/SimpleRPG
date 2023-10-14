@@ -1,35 +1,37 @@
 package ru.vsu.cs;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Balance {
-    private int silver;
-    private int gold;
+    private final List<Currency> currencies;
 
     public Balance(){
-        this.silver = 0;
-        this.gold = 0;
+        this.currencies = new ArrayList<>();
+        currencies.add(new Currency(0, 0, "Silver"));
+        currencies.add(new Currency(1, 0, "Gold"));
     }
-
+    @JsonCreator
+    public Balance(List<Currency> currencies) {
+        this.currencies = currencies;
+    }
+    @JsonIgnore
     public int getSilver() {
-        return silver;
+        return currencies.get(0).getValue();
     }
 
     public void addSilver(int delta) {
-        this.silver += delta;
+        this.currencies.get(0).addValue(delta);
     }
-
+    @JsonIgnore
     public int getGold() {
-        return gold;
+        return currencies.get(1).getValue();
     }
 
     public void addGold(int delta) {
-        this.gold += delta;
-    }
-
-    @Override
-    public String toString() {
-        return "Balance{" +
-                "silver=" + silver +
-                ", gold=" + gold +
-                '}';
+        this.currencies.get(1).addValue(delta);
     }
 }
