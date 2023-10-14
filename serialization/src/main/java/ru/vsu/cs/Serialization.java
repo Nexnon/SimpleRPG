@@ -26,7 +26,7 @@ public class Serialization<T> {
     }
 
     public static void main (String args[]) {
-        List<Player> players = Generator.generate(100_000);
+        List<Player> players = Generator.generate(500_000);
 
         String filePath ="player.json";
 
