@@ -7,36 +7,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SkillTree {
-    private final List<Skill> skillList;
+    private final List<Skill> skills;
 
     @JsonIgnore
     private final static String[] NAMES = {"Bonus Damage", "Bonus bounty", "Bonus armor"};
 
     public SkillTree() {
-        this.skillList = new ArrayList<>();
+        this.skills = new ArrayList<>();
         for(int i = 0; i < 3; i++){
-            skillList.add(new Skill(i, NAMES[i]));
+            skills.add(new Skill(i, NAMES[i]));
         }
     }
 
 
     @JsonCreator
     public SkillTree(List<Skill> skillList) {
-        this.skillList = skillList;
+        this.skills = skillList;
     }
 
     public Skill getSkill(int id) {
-        return skillList.get(id);
+        return skills.get(id);
     }
 
     public void setSkill(int id, boolean isResearched) {
-        skillList.get(id).setResearched(isResearched);
+        skills.get(id).setResearched(isResearched);
     }
 
     @Override
     public String toString() {
         return "SkillTree{" +
-                "skillList=" + skillList +
+                "skillList=" + skills +
                 '}';
     }
 }

@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.*;
         @JsonSubTypes.Type(value = Armor.class, name = "armor"),
         @JsonSubTypes.Type(value = Weapon.class, name = "weapon")
 })
-public class Item {
+public abstract class Item {
     protected int id;
     protected String name;
 

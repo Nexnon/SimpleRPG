@@ -12,12 +12,10 @@ import java.util.List;
 
 public class Serialization<T> {
 
-    public void serializeObjectsToJson(List<T> objects, String filePath) throws IOException {
+    public void serializeObjectsToJson(List<T> objects, String filePath){
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
 
-
-        // Write the JSON to a file
         try {
             File file = new File(filePath);
             objectMapper.writeValue(file, objects);
@@ -25,5 +23,14 @@ public class Serialization<T> {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void main (String args[]) {
+        List<Player> players = Generator.generate(100_000);
+
+        String filePath ="player.json";
+
+        Serialization<Player> serialization = new Serialization<>();
+        serialization.serializeObjectsToJson(players, filePath);
     }
 }

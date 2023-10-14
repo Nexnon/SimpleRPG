@@ -1,6 +1,8 @@
 package ru.vsu.cs;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Skill {
@@ -30,6 +32,7 @@ public class Skill {
         return id;
     }
 
+    @JsonIgnore
     public boolean isResearched() {
         return isResearched;
     }

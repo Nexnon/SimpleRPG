@@ -16,12 +16,24 @@ public class Deserialization<T> {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
 
-
         File file = new File(filePath);
 
-        // Deserialize JSON from file into a list of objects
         List<T> objects = objectMapper.readValue(file, objectMapper.getTypeFactory().constructCollectionType(List.class, objectType));
 
         return objects;
+    }
+
+    public static void main(String[] args) {
+        Deserialization<Player> deserializer = new Deserialization<>();
+        String filePath = "player.json";
+        try {
+            List<Player> deserializedObjects = deserializer.deserializeJsonToObjects(filePath, Player.class);
+            for (Player player : deserializedObjects) {
+                System.out.println(player.toString());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
