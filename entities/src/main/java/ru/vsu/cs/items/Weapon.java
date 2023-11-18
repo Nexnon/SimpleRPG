@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Weapon extends Item{
 
+    private int weapon_id;
+
     @JsonProperty("damage")
     private int damage;
 
@@ -17,10 +19,19 @@ public class Weapon extends Item{
     @Override
     public String toString() {
         return "Weapon{" +
-                "damage=" + damage +
+                "weapon_id=" + weapon_id +
+                ", damage=" + damage +
                 ", id=" + id +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    public int getWeapon_id() {
+        return weapon_id;
+    }
+
+    public void setWeapon_id(int weapon_id) {
+        this.weapon_id = weapon_id;
     }
 
     public int getDamage() {

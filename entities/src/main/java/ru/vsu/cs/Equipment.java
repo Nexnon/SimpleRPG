@@ -25,7 +25,7 @@ public class Equipment {
         this.armor = armor;
     }
 
-    public Item getWeapon() {
+    public Weapon getWeapon() {
         return weapon;
     }
 
@@ -33,7 +33,7 @@ public class Equipment {
         this.weapon = weapon;
     }
 
-    public Item getArmor() {
+    public Armor getArmor() {
         return armor;
     }
 

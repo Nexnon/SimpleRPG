@@ -13,15 +13,19 @@ public class Player {
     @JsonIgnore
     private static int lastId = 0;
     @JsonProperty("inventory")
-    private final Inventory inventory;
+    private Inventory inventory;
 
     @JsonProperty("equipment")
-    private final Equipment equipment;
+    private Equipment equipment;
 
     @JsonProperty("balance")
-    private final Balance balance;
+    private Balance balance;
     @JsonProperty("skillTree")
-    private final SkillTree skillTree;
+    private SkillTree skillTree;
+
+    public Player() {
+
+    }
 
     @Override
     public String toString() {
@@ -58,6 +62,10 @@ public class Player {
         return id;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public Inventory getInventory() {
         return inventory;
     }
@@ -72,5 +80,33 @@ public class Player {
 
     public SkillTree getSkillTree() {
         return skillTree;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public static void setLastId(int lastId) {
+        Player.lastId = lastId;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
+
+    public void setEquipment(Equipment equipment) {
+        this.equipment = equipment;
+    }
+
+    public void setBalance(Balance balance) {
+        this.balance = balance;
+    }
+
+    public void setSkillTree(SkillTree skillTree) {
+        this.skillTree = skillTree;
     }
 }
