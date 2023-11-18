@@ -12,6 +12,11 @@ public class Inventory {
     public Inventory() {
         inventory = new ArrayList<>();
     }
+
+    public Inventory(List<InventoryCell> inventory) {
+        this.inventory = inventory;
+    }
+
     @JsonIgnore
     public Item getItem(int row, int col) {
         for (InventoryCell inventoryCell : inventory) {
@@ -30,6 +35,10 @@ public class Inventory {
             }
         }
         this.inventory.add(new InventoryCell(row, col, item));
+    }
+
+    public List<InventoryCell> getInventory() {
+        return inventory;
     }
 
     @Override

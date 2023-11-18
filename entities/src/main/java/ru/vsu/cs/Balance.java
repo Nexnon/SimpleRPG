@@ -18,6 +18,11 @@ public class Balance {
     public Balance(List<Currency> currencies) {
         this.currencies = currencies;
     }
+
+    public List<Currency> getCurrencies() {
+        return currencies;
+    }
+
     @JsonIgnore
     public int getSilver() {
         return currencies.get(0).getValue();

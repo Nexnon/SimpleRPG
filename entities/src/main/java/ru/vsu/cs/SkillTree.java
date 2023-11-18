@@ -25,6 +25,10 @@ public class SkillTree {
         this.skills = skillList;
     }
 
+    public List<Skill> getSkills() {
+        return skills;
+    }
+
     public Skill getSkill(int id) {
         return skills.get(id);
     }
